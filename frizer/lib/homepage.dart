@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frizer/pom.dart';
+import 'package:frizer/appointment.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
         theme: ThemeData(primarySwatch: Colors.indigo),
         home: Scaffold(
-          body: pom(),
+          body: appointment(),
         ));
   }
 }
