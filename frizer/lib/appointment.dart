@@ -14,7 +14,7 @@ class appointment extends StatefulWidget {
 class _appointmentState extends State<appointment> {
   late DateTime _focusedDay;
 
-  late DateTime _selectedDay = DateTime(2022);
+  late DateTime _selectedDay = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -146,17 +146,20 @@ class _appointmentState extends State<appointment> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
+        padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              hairdresser(),
-              hairdresser(),
-              hairdresser(),
-              hairdresser(),
-              hairdresser(),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Row(
+              children: [
+                hairdresser(),
+                hairdresser(),
+                hairdresser(),
+                hairdresser(),
+                hairdresser(),
+              ],
+            ),
           ),
         ),
       ),
