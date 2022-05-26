@@ -23,6 +23,26 @@ class _hairdresserState extends State<hairdresser> {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      //  height: 70,
+                      width: double.infinity,
+                      padding: EdgeInsets.all(8),
+                      color: Color.fromARGB(255, 18, 18, 18).withOpacity(.3),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          'MARIJA ',
+                          style: GoogleFonts.gabriela(
+                              color: Colors
+                                  .white, // Color.fromARGB(255, 137, 111, 75),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ),
+                  ),
                   Container(
                     decoration: BoxDecoration(
                         border: Border.all(
@@ -44,26 +64,6 @@ class _hairdresserState extends State<hairdresser> {
                             focus = !focus;
                           });
                         },
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      //  height: 70,
-                      width: double.infinity,
-                      padding: EdgeInsets.all(8),
-                      color: Color.fromARGB(255, 18, 18, 18).withOpacity(.3),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: Text(
-                          'MARIJA ',
-                          style: GoogleFonts.gabriela(
-                              color: Colors
-                                  .white, // Color.fromARGB(255, 137, 111, 75),
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
-                        ),
                       ),
                     ),
                   ),
