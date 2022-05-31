@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:frizer/hairdresser.dart';
+import 'package:frizer/home.dart';
+import 'package:frizer/login.dart';
 import 'package:frizer/termin.dart';
+
 import 'package:table_calendar/table_calendar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -41,7 +44,12 @@ class _appointmentState extends State<appointment> {
             Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => home()),
+                    )
+                  },
                   icon: const Icon(
                     Icons.chevron_left,
                     color: Colors.white,
@@ -150,7 +158,7 @@ class _appointmentState extends State<appointment> {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            padding: const EdgeInsets.only(left: 15.0),
             child: Row(
               children: [
                 hairdresser(),
@@ -178,7 +186,7 @@ class _appointmentState extends State<appointment> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(15, 25, 15, 0),
+        padding: const EdgeInsets.fromLTRB(15, 25, 0, 0),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -203,26 +211,34 @@ class _appointmentState extends State<appointment> {
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
                 colors: [
-                  Color.fromARGB(255, 18, 18, 18),
-                  Color.fromARGB(255, 65, 64, 64)
+                  Color.fromARGB(255, 137, 111, 75),
+                  Color.fromARGB(255, 137, 111, 75)
                 ],
               )),
-          child: TextButton(
-            onPressed: () {},
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(15, 3, 15, 3),
-              child: Text('Zakažite termin',
-                  style: GoogleFonts.openSans(
-                    fontSize: 17,
-                    color: Colors.white,
-                  ) //TextStyle(fontSize: 18),
-                  ),
-            ),
-            style: TextButton.styleFrom(
-              primary: Colors.transparent,
-              // backgroundColor: Color.fromARGB(255, 137, 111, 75),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
+          child: SizedBox(
+            width: 380,
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => login()),
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(15, 3, 15, 3),
+                child: Text('Zakažite termin',
+                    style: GoogleFonts.openSans(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ) //TextStyle(fontSize: 18),
+                    ),
+              ),
+              style: TextButton.styleFrom(
+                primary: Colors.transparent,
+                // backgroundColor: Color.fromARGB(255, 137, 111, 75),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
               ),
             ),
           ),

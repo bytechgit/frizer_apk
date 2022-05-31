@@ -69,68 +69,6 @@ class _hairdresserState extends State<hairdresser> {
                   ),
                 ],
               )),
-        ) /*Column(
-        children: [
-          InkWell(
-              onTap: () async {
-                setState(() {
-                  focus = !focus;
-                });
-              },
-              child: Stack(children: [
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: focus
-                              ? Color.fromARGB(255, 137, 111, 75)
-                              : Color.fromARGB(255, 255, 250, 250),
-                          width: 3),
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Image.network(
-                      'https://daysmart-salon.imgix.net/uploads/2019/03/hairdresser-feature.jpg',
-                      width: 150.0,
-                      height: 150.0,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 105, 5, 10),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Marija',
-                        style: GoogleFonts.openSans(
-                            color: Colors
-                                .black, //Color.fromARGB(255, 137, 111, 75),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Text(
-                        'Krsanin',
-                        style: GoogleFonts.openSans(
-                            color: Colors
-                                .black, //Color.fromARGB(255, 137, 111, 75),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                ),
-              ])),
-          Padding(
-            padding: const EdgeInsets.only(top: 3.0),
-            child: Text(
-              'Aleksandra Milojevic',
-              style: GoogleFonts.openSans(
-                  color: Color.fromARGB(255, 137, 111, 75),
-                  fontSize: 15,
-                  fontWeight: focus ? FontWeight.w500 : FontWeight.normal),
-            ),
-          ),
-        ],
-      ), */
-        );
+        ));
   }
 }

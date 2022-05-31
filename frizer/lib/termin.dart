@@ -24,7 +24,7 @@ class _terminState extends State<termin> {
           height: 50,
           width: 150,
           decoration: BoxDecoration(
-            color: focus ? Color.fromARGB(255, 137, 111, 75) : Colors.grey[50],
+            color: focus ? Color.fromARGB(255, 65, 64, 64) : Colors.grey[50],
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(10.0),
                 bottomRight: Radius.circular(10.0),
