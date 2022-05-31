@@ -1,11 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frizer/hairdresser.dart';
-import 'package:frizer/home.dart';
-import 'package:frizer/login.dart';
-import 'package:frizer/termin.dart';
-
+import 'package:frizer/models/terminDate.dart';
+import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:frizer/termin.dart';
+
+import 'models/termin.dart';
 
 class appointment extends StatefulWidget {
   const appointment({Key? key}) : super(key: key);
@@ -16,23 +18,22 @@ class appointment extends StatefulWidget {
 
 class _appointmentState extends State<appointment> {
   late DateTime _focusedDay;
-
-  late DateTime _selectedDay = DateTime.now();
-
+  final terminController = Get.find<Termin>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Column(children: [
       Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
-          colors: [
-            Color.fromARGB(255, 18, 18, 18),
-            Color.fromARGB(255, 65, 64, 64)
-          ],
-        )),
+          gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [
+              Color.fromARGB(255, 18, 18, 18),
+              Color.fromARGB(255, 65, 64, 64)
+            ],
+          ),
+        ),
         //color: Color.fromARGB(255, 18, 18, 18),
         height: 270,
         width: double.infinity,
@@ -41,29 +42,29 @@ class _appointmentState extends State<appointment> {
             const SizedBox(
               height: 25,
             ),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => home()),
-                    )
-                  },
-                  icon: const Icon(
-                    Icons.chevron_left,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-                ),
-                Text(
-                  'Nazad',
-                  style: GoogleFonts.montserrat(
-                      fontSize: 20,
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.chevron_left,
                       color: Colors.white,
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
+                      size: 30,
+                    ),
+                  ),
+                  Text(
+                    'Nazad',
+                    style: GoogleFonts.montserrat(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 35),
@@ -92,11 +93,11 @@ class _appointmentState extends State<appointment> {
                 lastDay: DateTime.utc(2030, 3, 14),
                 focusedDay: DateTime.now(),
                 selectedDayPredicate: (day) {
-                  return isSameDay(_selectedDay, day);
+                  return isSameDay(terminController.datum, day);
                 },
                 onDaySelected: (selectedDay, focusedDay) {
                   setState(() {
-                    _selectedDay = selectedDay;
+                    terminController.datum = selectedDay;
                     _focusedDay =
                         focusedDay; // update `_focusedDay` here as well
                   });
@@ -158,14 +159,24 @@ class _appointmentState extends State<appointment> {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Padding(
-            padding: const EdgeInsets.only(left: 15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Row(
               children: [
-                hairdresser(),
-                hairdresser(),
-                hairdresser(),
-                hairdresser(),
-                hairdresser(),
+                hairdresser(
+                  id: 1,
+                ),
+                hairdresser(
+                  id: 2,
+                ),
+                hairdresser(
+                  id: 3,
+                ),
+                hairdresser(
+                  id: 4,
+                ),
+                hairdresser(
+                  id: 5,
+                ),
               ],
             ),
           ),
@@ -191,12 +202,30 @@ class _appointmentState extends State<appointment> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              termin(),
-              termin(),
-              termin(),
-              termin(),
-              termin(),
-              termin()
+              termin(
+                termin_vreme:
+                    TerminDate(sat: 8, minut: 15, trajanje: 30, id: 1),
+              ),
+              termin(
+                termin_vreme:
+                    TerminDate(sat: 8, minut: 15, trajanje: 30, id: 2),
+              ),
+              termin(
+                termin_vreme:
+                    TerminDate(sat: 8, minut: 15, trajanje: 30, id: 3),
+              ),
+              termin(
+                termin_vreme:
+                    TerminDate(sat: 8, minut: 15, trajanje: 30, id: 4),
+              ),
+              termin(
+                termin_vreme:
+                    TerminDate(sat: 8, minut: 15, trajanje: 30, id: 5),
+              ),
+              termin(
+                termin_vreme:
+                    TerminDate(sat: 8, minut: 15, trajanje: 30, id: 6),
+              )
             ],
           ),
         ),
@@ -216,23 +245,16 @@ class _appointmentState extends State<appointment> {
                 ],
               )),
           child: SizedBox(
-            width: 380,
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: 50,
             child: TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => login()),
-                );
-              },
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(15, 3, 15, 3),
-                child: Text('Zakažite termin',
-                    style: GoogleFonts.openSans(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ) //TextStyle(fontSize: 18),
-                    ),
-              ),
+              onPressed: () {},
+              child: Text('Zakažite termin',
+                  style: GoogleFonts.openSans(
+                    fontSize: 22,
+                    color: Colors.white,
+                  ) //TextStyle(fontSize: 18),
+                  ),
               style: TextButton.styleFrom(
                 primary: Colors.transparent,
                 // backgroundColor: Color.fromARGB(255, 137, 111, 75),

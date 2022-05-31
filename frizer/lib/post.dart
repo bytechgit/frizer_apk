@@ -12,7 +12,7 @@ class _postState extends State<post> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 15, 15, 0),
+      padding: EdgeInsets.fromLTRB(0, 12, 12, 0),
       child: Container(
         height: 200,
         width: 320,

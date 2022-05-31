@@ -1,16 +1,21 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'models/termin.dart';
+
 class hairdresser extends StatefulWidget {
-  const hairdresser({Key? key}) : super(key: key);
+  int id;
+  hairdresser({Key? key, required this.id}) : super(key: key);
 
   @override
   State<hairdresser> createState() => _hairdresserState();
 }
 
 class _hairdresserState extends State<hairdresser> {
-  bool focus = false;
-
+  final terminController = Get.find<Termin>();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,27 +48,32 @@ class _hairdresserState extends State<hairdresser> {
                       ),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: focus
-                                ? Color.fromARGB(255, 137, 111,
-                                    75) //Color.fromARGB(255, 137, 111, 75)
-                                : Color.fromARGB(255, 255, 250, 250),
-                            width: 5),
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    child: Ink.image(
-                      image: NetworkImage(
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdBcBANYX49vuhaEe8ZT05sfh7WijLu78ZaA&usqp=CAU',
-                      ),
-                      fit: BoxFit.cover,
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(12),
-                        onTap: () async {
-                          setState(() {
-                            focus = !focus;
-                          });
-                        },
+                  Obx(
+                    () => Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: terminController.frizer.value == widget.id
+                                  ? Color.fromARGB(255, 137, 111,
+                                      75) //Color.fromARGB(255, 137, 111, 75)
+                                  : Color.fromARGB(255, 255, 250, 250),
+                              width: 5),
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                      child: Ink.image(
+                        image: NetworkImage(
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdBcBANYX49vuhaEe8ZT05sfh7WijLu78ZaA&usqp=CAU',
+                        ),
+                        fit: BoxFit.cover,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(12),
+                          onTap: () async {
+                            inspect(terminController);
+                            if (terminController.frizer == widget.id) {
+                              terminController.frizer.value = -1;
+                            } else {
+                              terminController.frizer.value = widget.id;
+                            }
+                          },
+                        ),
                       ),
                     ),
                   ),
