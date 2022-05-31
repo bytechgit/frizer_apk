@@ -23,7 +23,7 @@ class _forgotPasswordState extends State<forgotPassword> {
                   alignment: Alignment.topCenter,
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Image.asset("images/Reset password.png"),
+                    child: Image.asset("images/forgotPassword.png"),
                   ),
                 ),
               ),
@@ -66,7 +66,12 @@ class _forgotPasswordState extends State<forgotPassword> {
                     const EdgeInsets.symmetric(vertical: 16.0, horizontal: 30),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 137, 111, 75), elevation: 5),
+                    primary: Color.fromARGB(255, 137, 111, 75),
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text(

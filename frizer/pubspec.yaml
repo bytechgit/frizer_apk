@@ -41,6 +41,8 @@ dependencies:
   themed: ^3.0.2
   get: ^4.6.5
   intl: ^0.17.0
+  image_picker: ^0.8.5+3
+  flutter_chat_bubble: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -8,7 +8,11 @@ import 'models/termin.dart';
 
 class hairdresser extends StatefulWidget {
   int id;
-  hairdresser({Key? key, required this.id}) : super(key: key);
+  String photo;
+  String name;
+  hairdresser(
+      {Key? key, required this.id, required this.photo, required this.name})
+      : super(key: key);
 
   @override
   State<hairdresser> createState() => _hairdresserState();
@@ -38,7 +42,7 @@ class _hairdresserState extends State<hairdresser> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 5),
                         child: Text(
-                          'MARIJA ',
+                          widget.name,
                           style: GoogleFonts.gabriela(
                               color: Colors
                                   .white, // Color.fromARGB(255, 137, 111, 75),
@@ -55,13 +59,11 @@ class _hairdresserState extends State<hairdresser> {
                               color: terminController.frizer.value == widget.id
                                   ? Color.fromARGB(255, 137, 111,
                                       75) //Color.fromARGB(255, 137, 111, 75)
-                                  : Color.fromARGB(255, 255, 250, 250),
+                                  : Color.fromARGB(255, 250, 250, 250),
                               width: 5),
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       child: Ink.image(
-                        image: NetworkImage(
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdBcBANYX49vuhaEe8ZT05sfh7WijLu78ZaA&usqp=CAU',
-                        ),
+                        image: NetworkImage(widget.photo),
                         fit: BoxFit.cover,
                         child: InkWell(
                           borderRadius: BorderRadius.circular(12),

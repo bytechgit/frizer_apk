@@ -105,7 +105,6 @@ class _categoryState extends State<category> {
                     ),
                   ),
                 ),
-
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Padding(
